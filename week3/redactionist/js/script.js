@@ -8,6 +8,7 @@ function setup() {
 
 function update(){
   $('span').each(updateSpan);
+  $('span').mousedown(spanClicked);
 }
 
 function updateSpan(){
@@ -17,6 +18,11 @@ function updateSpan(){
     $(this).removeClass('redacted');
     $(this).addClass('revealed');
   }
+}
+
+function spanClicked(){
+  $(this).removeClass('revealed');
+  $(this).addClass('redacted');
 }
 /********************************************************************
 

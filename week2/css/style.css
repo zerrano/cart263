@@ -1,0 +1,11 @@
+body {
+  font-family: Helvetica, sans-serif;
+}
+#main-heading {
+  font-size: 2em;
+  color: red;
+}
+.game-icon {
+  padding: 10px;
+  max-width: 100px;
+}

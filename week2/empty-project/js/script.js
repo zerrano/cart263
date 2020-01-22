@@ -18,7 +18,7 @@ function setup() {
     //event listenner for detecting arrow key rotations
     document.addEventListener('keydown', rotate);
     //event listenner for clicking/deleting pixels on mouse press
-
+    document.addEventListener('click', remove);
 
     //pushes the completed copy onto the page
     document.body.appendChild(pixel);
@@ -64,7 +64,10 @@ function rotate(e){
   }
 }
 
-function record(e){
-  savedKey = e.keyCode;
-  console.log(savedkey);
+//on mouse click, set opacity to 0 so that it appears deleted
+//works for a few pixels before making the entire canvas blank for some reason
+function remove(e){
+
+  let pixel = e.target;
+  pixel.style.opacity = "0";
 }

@@ -2,6 +2,8 @@
 
 let $mouth;
 let $fly;
+const buzz = new Audio("assets/sounds/buzz.mp3");
+const crunch = new Audio("assets/sounds/crunch.wav");
 
 $(document).ready(setup);
 
@@ -11,13 +13,22 @@ function setup() {
   $mouth = $('#mouth');
 
 
-  $('#fly').draggable()
+  $('#fly').draggable ({
+    start: buzz,
+    stop: unbuzz,
+  });
 
 
   $( "#mouth" ).droppable({
   drop: onDrop
 });
 
+
+  }
+
+  function buzz(){
+    buzz.loop = true;
+    buzz.play();
   }
 
   function onDrop(){

@@ -10,7 +10,15 @@ function setup() {
   //will re-hide spans every 500 frames
   setInterval(update, 500);
 
-  console.log($('.secret').length)
+  console.log($('.secret').length);
+
+  //will call our spanClicked function when clicking on specific boxes
+  $('span').on('click', spanClicked);
+
+  totalSecrets = $('.secret').length;
+  $('#totalSecrets').text(totalSecrets);
+  //adds an event to mouseover for all secrets
+  $('.secret').on('mouseover', discoveredSecrets);
 }
 
 function update(){
@@ -32,6 +40,15 @@ function updateSpan(){
 function spanClicked(){
   $(this).removeClass('revealed');
   $(this).addClass('redacted');
+}
+
+//function used to display and count up all the total secrets on page
+function discoveredSecrets(){
+  $(this).addClass('found');
+  $(this).off('mouseover');
+  secretsFound += 1;
+  //shows the total amount of secrets found
+  $('#foundSecrets').text(secretsFound);
 }
 /********************************************************************
 

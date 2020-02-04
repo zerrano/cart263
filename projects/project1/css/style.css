@@ -1,0 +1,26 @@
+/* Our google font */
+@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
+
+body {
+  background-color: #ffdb78;
+}
+
+p, h1 {
+  font-size: 40px;
+  padding: 5px;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.redacted{
+
+}
+
+.revealed {
+  background-color: white;
+  color: red;
+}
+
+.found {
+  border-style: solid;
+  border-color: red;
+}

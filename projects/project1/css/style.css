@@ -1,15 +1,16 @@
 /* Our google font */
-@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
 
 body {
-  background-color: #ffdb78;
+  background-image: url("../assets/images/background.jpg");
   padding: 5%;
 }
 
 p, h1 {
   font-size: 25px;
+  font-weight:bold;
   padding: 5px;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Indie Flower', cursive;
 }
 
 .found {

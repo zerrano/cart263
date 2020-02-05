@@ -10,6 +10,9 @@ let totalSecrets;
 let $bin;
 //our crap words
 let $found;
+//our sound effects
+const selected = new Audio("assets/sounds/honk.wav");
+const burn = new Audio("assets/sounds/fire.wav");
 
 function setup() {
   //will re-hide spans every 500 frames
@@ -26,7 +29,9 @@ function setup() {
   });
 
   $found = $('.secret');
-  $found.draggable();
+  $found.draggable(
+
+  );
 
   //will call our spanClicked function when clicking on specific boxes
   $('.secret').on('click', spanClicked);
@@ -46,18 +51,22 @@ function update(){
 //function for deleting our dragged elements
 function onDrop(event, ui) {
 
+  //deletes words
   ui.draggable.remove();
-
+  //plays burn track on deletion
+  burn.play();
   $(this).attr('h1');
+  //adds points to words deleted
   secretsFound += 1;
   //shows the total amount of secrets found
   $('#foundSecrets').text(secretsFound);
 }
 
-//removes spans on click
+//draggable elements
 function spanClicked(){
   $(this).removeClass('revealed');
   $(this).addClass('redacted');
+  selected.play();
 }
 
 //function used to display and count up all the total secrets on page

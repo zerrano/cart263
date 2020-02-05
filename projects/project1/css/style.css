@@ -3,10 +3,11 @@
 
 body {
   background-color: #ffdb78;
+  padding: 5%;
 }
 
 p, h1 {
-  font-size: 30px;
+  font-size: 25px;
   padding: 5px;
   font-family: 'Work Sans', sans-serif;
 }

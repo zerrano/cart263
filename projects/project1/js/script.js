@@ -25,7 +25,7 @@ function setup() {
     drop: onDrop
   });
 
-  $found = $('#found');
+  $found = $('span');
   $found.draggable();
 
   //will call our spanClicked function when clicking on specific boxes
@@ -38,21 +38,18 @@ function setup() {
 }
 
 function update(){
-  // $('span').each(updateSpan);
 
   //will call on the span removing on click
   $('span').mousedown(spanClicked);
 }
-//
-// function updateSpan(){
-//   let r = Math.random();
-//
-//   //will revert the opened span boxes back to normal at a certain percent
-//   if (r < 0.1) {
-//     $(this).removeClass('redacted');
-//     $(this).addClass('revealed');
-//   }
-// }
+
+function onDrop(event, ui) {
+
+  ui.draggable.remove();
+
+  $(this).attr('h1');
+}
+
 //removes spans on click
 function spanClicked(){
   $(this).removeClass('revealed');
@@ -67,6 +64,30 @@ function discoveredSecrets(){
   //shows the total amount of secrets found
   $('#foundSecrets').text(secretsFound);
 }
+
+//Our timer
+function startTimer(duration, display) {
+    let timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    let fiveMinutes = 30 * 1,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
 /********************************************************************
 
 Title of Project

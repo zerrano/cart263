@@ -43,6 +43,7 @@ function update(){
   $('span').mousedown(spanClicked);
 }
 
+//function for deleting our dragged elements
 function onDrop(event, ui) {
 
   ui.draggable.remove();
@@ -65,7 +66,7 @@ function discoveredSecrets(){
   $('#foundSecrets').text(secretsFound);
 }
 
-//Our timer
+//Our basic timer
 function startTimer(duration, display) {
     let timer = duration, minutes, seconds;
     setInterval(function () {
@@ -78,15 +79,16 @@ function startTimer(duration, display) {
         display.textContent = minutes + ":" + seconds;
 
         if (--timer < 0) {
-            timer = duration;
+          //reloads the page when the countdown hits 0
+            location.reload();
         }
     }, 1000);
 }
 
 window.onload = function () {
-    let fiveMinutes = 30 * 1,
+    let deathCount = 30 * 1,
         display = document.querySelector('#time');
-    startTimer(fiveMinutes, display);
+    startTimer(deathCount, display);
 };
 /********************************************************************
 

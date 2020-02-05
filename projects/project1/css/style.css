@@ -11,15 +11,6 @@ p, h1 {
   font-family: 'Work Sans', sans-serif;
 }
 
-.redacted{
-
-}
-
-.revealed {
-  background-color: white;
-  color: red;
-}
-
 .found {
   border-style: solid;
   border-color: red;

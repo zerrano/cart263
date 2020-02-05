@@ -18,18 +18,18 @@ function setup() {
   console.log($('.secret').length);
 
   //where we'll drop our crap words
-  $bin = $('h1');
+  $bin = $('img');
   // Make it droppable
   $bin.droppable({
     // The drop option specifies a function to call when a drop is completed
     drop: onDrop
   });
 
-  $found = $('span');
+  $found = $('.secret');
   $found.draggable();
 
   //will call our spanClicked function when clicking on specific boxes
-  $('span').on('click', spanClicked);
+  $('.secret').on('click', spanClicked);
 
   totalSecrets = $('.secret').length;
   $('#totalSecrets').text(totalSecrets);

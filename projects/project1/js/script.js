@@ -13,11 +13,15 @@ let $found;
 //our sound effects
 const selected = new Audio("assets/sounds/honk.wav");
 const burn = new Audio("assets/sounds/fire.wav");
+const beep = new Audio("assets/sounds/beep.wav");
+const start = new Audio("assets/sounds/start.wav");
+
 
 function setup() {
   //will re-hide spans every 500 frames
   setInterval(update, 500);
-
+  start.currentTime=0;
+  start.play();
   console.log($('.secret').length);
 
   //where we'll drop our crap words
@@ -54,7 +58,9 @@ function onDrop(event, ui) {
   //deletes words
   ui.draggable.remove();
   //plays burn track on deletion
+  burn.currentTime=0;
   burn.play();
+
   $(this).attr('h1');
   //adds points to words deleted
   secretsFound += 1;
@@ -66,6 +72,8 @@ function onDrop(event, ui) {
 function spanClicked(){
   $(this).removeClass('revealed');
   $(this).addClass('redacted');
+  
+  selected.currentTime=0;
   selected.play();
 }
 
@@ -73,6 +81,8 @@ function spanClicked(){
 function discoveredSecrets(){
   $(this).addClass('found');
   $(this).off('mouseover');
+  beep.currentTime = 0;
+  beep.play();
 }
 
 //Our basic timer

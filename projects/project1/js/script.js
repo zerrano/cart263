@@ -2,7 +2,7 @@
 
 $(document).ready(setup);
 
-//variables for ojur secrets
+//variables for our secrets
 let secretsFound = 0;
 let totalSecrets;
 
@@ -72,7 +72,7 @@ function onDrop(event, ui) {
 function spanClicked(){
   $(this).removeClass('revealed');
   $(this).addClass('redacted');
-  
+
   selected.currentTime=0;
   selected.play();
 }
@@ -111,10 +111,11 @@ window.onload = function () {
 };
 /********************************************************************
 
-Title of Project
-Author Name
+The Endless Paradox
+Timothy Serrano
 
-This is a template. Fill in the title, author, and this description
-to match your project! Write JavaScript to do amazing things below!
+Welcome to the paradox prison. As the gong rings, you must burn as many words as the paradox asks for.
+If you do not burn enough words by the time the timer hits 0, then the gong will ring once more, and time will reset.
+Aka, if you don't drag as many descovered words into the flame, the game refreshes.
 
 *********************************************************************/

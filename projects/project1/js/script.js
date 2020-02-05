@@ -118,4 +118,6 @@ Welcome to the paradox prison. As the gong rings, you must burn as many words as
 If you do not burn enough words by the time the timer hits 0, then the gong will ring once more, and time will reset.
 Aka, if you don't drag as many descovered words into the flame, the game refreshes.
 
+Here's the catch though: there is no 13th word. There are only 12.
+
 *********************************************************************/

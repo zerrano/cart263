@@ -49,6 +49,9 @@ function onDrop(event, ui) {
   ui.draggable.remove();
 
   $(this).attr('h1');
+  secretsFound += 1;
+  //shows the total amount of secrets found
+  $('#foundSecrets').text(secretsFound);
 }
 
 //removes spans on click
@@ -61,9 +64,6 @@ function spanClicked(){
 function discoveredSecrets(){
   $(this).addClass('found');
   $(this).off('mouseover');
-  secretsFound += 1;
-  //shows the total amount of secrets found
-  $('#foundSecrets').text(secretsFound);
 }
 
 //Our basic timer

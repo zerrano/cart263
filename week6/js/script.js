@@ -160,7 +160,18 @@ let $correctButton;
 let buttons = [];
 // How many possible answers there are per round
 const NUM_OPTIONS = 5;
-
+//voice commands
+//voice command to give up
+let sayGiveUp = {
+  'I give up': give up
+};
+//voice command to say it again
+let sayItAgain = {
+  'Say it again': repeat
+};
+let speakGuess = {
+  'I think it is *animals': voiceGuess
+}
 // Get setup!
 $(document).ready(setup);
 
@@ -169,12 +180,18 @@ $(document).ready(setup);
 // We just start a new round right away!
 function setup() {
   newRound();
+
+  //annyang commands
+  annyang.addCommands(speakGiveUp);
+  annyang.addCommands(speakRepeat);
+  annyang.addCommands(speakGuess);
+
+  //command to start annyang
+  annyang.start();
 }
 
 // newRound()
-//
-// Generates a set of possible answers randomly from the set of animals
-// and adds buttons for each one. Then chooses the correct button randomly.
+
 function newRound() {
   // We empty the buttons array for the new round
   buttons = [];
@@ -197,17 +214,7 @@ function newRound() {
 //
 // Uses ResponsiveVoice to say the specified text backwards!
 function sayBackwards(text) {
-  // We create a reverse version of the name by:
-  // 1. using .split('') to split the string into an array with each character
-  // as a separate element.
-  // e.g. "bat" -> ['b','a','t']
-  // 2. using .reverse() on the resulting array to create a reverse version
-  // e.g. ['b','a','t'] -> ['t','a','b']
-  // 3. using .join('') on the resulting array to create a string version of the array
-  // with each element forming the string (joined together with nothing in between)
-  // e.g. ['t','a','b'] -> "tab"
-  // (We do this all in one line using "chaining" because .split() returns an array for
-  // for .reverse() to work on, and .reverse() returns an array for .join() to work on.)
+
   let backwardsText = text.split('').reverse().join('');
 
   // Set some random numbers for the voice's pitch and rate parameters for a bit of fun
@@ -222,9 +229,7 @@ function sayBackwards(text) {
 }
 
 // addButton(label)
-//
-// Creates a button using jQuery UI on a div with the label specified
-// and adds it to the page, returning the button as well
+
 function addButton(label) {
   // Create a div with jQuery using HTML
   let $button = $('<div></div>');
@@ -243,10 +248,7 @@ function addButton(label) {
 }
 
 // handleGuess()
-//
-// Checks whether this was the correct guess (button) and
-// if so starts a new round
-// if not indicates it was incorrect
+
 function handleGuess() {
   // If the button they clicked on has the same label as
   // the correct button, it must be the right answer...

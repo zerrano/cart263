@@ -170,9 +170,6 @@ let sayGiveUp = {
   'I give up': giveUp
 };
 //voice command to say it again
-let sayItAgain = {
-  'Say it again': repeat
-};
 
 // Get setup!
 $(document).ready(setup);
@@ -186,8 +183,7 @@ function setup() {
   if (annyang) {
 
   //annyang commands
-  annyang.addCommands(speakGiveUp);
-  annyang.addCommands(speakRepeat);
+  annyang.addCommands(sayGiveUp);
 
   //begin annyang
   annyang.start();
@@ -207,10 +203,10 @@ function showAnswer(){
   if ($(this).text() === correctAnimal) {
     $(this).effect('shake');
     setTimeout(eraseGuess, 500);
+    setTimeout(newRound, 1200);
   }
 }
 
-//function for eraseGuess 
 // newRound()
 
 function newRound() {

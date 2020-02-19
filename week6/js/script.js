@@ -163,15 +163,18 @@ const NUM_OPTIONS = 5;
 //voice commands
 //voice command to give up
 let sayGiveUp = {
-  'I give up': give up
+  'I give up': giveup
 };
 //voice command to say it again
 let sayItAgain = {
   'Say it again': repeat
 };
-let speakGuess = {
-  'I think it is *animals': voiceGuess
-}
+//voice command for guessing
+let voiceGuess = {
+  'I think it is *animals': handleGuess
+};
+
+let correctAnimal;
 // Get setup!
 $(document).ready(setup);
 
@@ -182,9 +185,9 @@ function setup() {
   newRound();
 
   //annyang commands
-  annyang.addCommands(speakGiveUp);
-  annyang.addCommands(speakRepeat);
-  annyang.addCommands(speakGuess);
+  annyang.addCommands(sayGiveUp);
+  annyang.addCommands(sayItAgain);
+  annyang.addCommands(voiceGuess);
 
   //command to start annyang
   annyang.start();
@@ -197,21 +200,22 @@ function newRound() {
   buttons = [];
   // Loop for each option we'll offter
   for (let i = 0; i < NUM_OPTIONS; i++) {
-    // Choose the answer text randomly from the animals array
     let answer = getRandomElement(animals);
-    // Add a button with this label
     let $button = addButton(answer);
-    // Add this button to the buttons array
     buttons.push($button);
   }
   // Choose a random button from the buttons array as our correct button
   $correctButton = getRandomElement(buttons);
   // Say the label (text) on this button
   sayBackwards($correctButton.text());
+
+  //function to add in a correct answer
+  correctAnimal = buttons[Math.floor(Math.random() * buttons.length)];
+
+  //says the correct answer backwards
+  sayBackwards(correctAnimal);
 }
 
-// sayBackwards(text)
-//
 // Uses ResponsiveVoice to say the specified text backwards!
 function sayBackwards(text) {
 
@@ -223,25 +227,35 @@ function sayBackwards(text) {
     rate: Math.random()
   };
 
-  // Use ResponsiveVoice to speak the string we generated, with UK English Male voice
-  // and the options we just specified.
   responsiveVoice.speak(backwardsText, 'UK English Male', options);
 }
+
+//giveup function
+function giveup (){
+
+  //says the correct answer
+  responsiveVoice.speak(correctAnimal, 'UK English Male');
+  //checks for the correct answer
+  $('.guess').each(checkCorrect);
+  //set a delay of 20 mili seconds
+  setTimeout(newRound, 2000);
+}
+
+//repeat function
+function repeat(){
+  sayBackwards(correctAnimal);
+}
+
 
 // addButton(label)
 
 function addButton(label) {
   // Create a div with jQuery using HTML
   let $button = $('<div></div>');
-  // Give it the guess class
   $button.addClass("guess");
-  // Set the text in the div to our label
   $button.text(label);
-  // Turn the div into a button using jQuery UI's .button() method
   $button.button();
-  // Listen for a click on the button which means the user has guessed
   $button.on('click', handleGuess);
-  // Finally, add the button to the page so we can see it
   $('body').append($button);
   // Return the button
   return $button;
@@ -259,15 +273,13 @@ function handleGuess() {
     setTimeout(newRound, 1000);
   }
   else {
-    // Otherwise they were wrong, so shake the clicked button
+    // If wrong, shake the wrong answer
     $(this).effect('shake');
     // And say the correct animal again to "help" them
     sayBackwards($correctButton.text());
   }
 }
 
-// getRandomElement(array)
-//
 // Returns a random element from the provided array
 function getRandomElement(array) {
   let element = array[Math.floor(Math.random() * array.length)];

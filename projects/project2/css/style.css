@@ -26,11 +26,19 @@ p {
 img {
   display:block;
   margin: auto;
-  margin-top: -35px;
+}
+#subscribed {
+  margin-top: -55px;
+}
+
+#hidden {
+  margin-top: -45px;
+  opacity: 0;
+  font-size: 30px;
 }
 
 .credit{
-  width:100px;
-  height:100px;
+  width:150px;
+  height: 100px;
   position:absolute;
 }

@@ -10,7 +10,7 @@ h1 {
   color: white;
   text-align: center;
   margin: 0;
-  font-size: 50px;
+  font-size: 80px;
   font-weight:bold;
   padding: 5px;
   font-family: 'Luckiest Guy', cursive;
@@ -28,7 +28,9 @@ img {
   margin: auto;
   margin-top: -35px;
 }
-.found {
-  border-style: solid;
-  border-color: red;
+
+.credit{
+  width:100px;
+  height:100px;
+  position:absolute;
 }

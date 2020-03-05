@@ -20,7 +20,7 @@ all of the spawned credit cards and consume them.
 $(document).ready(setup);
 
 //Our Array to generate credit cards
-let creditImageArray = ['creditcard1.png', 'creditcard2.png', 'creditcard3.png']
+let creditImageArray = ['creditcard1.png', 'creditcard2.png', 'creditcard3.png'];
 
 
 function setup() {
@@ -78,8 +78,7 @@ function subscribe() {
         let randomSpeed = (Math.random() * 2500)+500;
         let distToBottom = window.innerHeight+50;
         $('.credit').animate({top:"-="+distToBottom}, randomSpeed);
-        let randomRGB = Math.random() * 255;
-        $('h1').css("color", randomRGB, 150, 200);
+        $('#tyrant').css("opacity", "1");
 
         // $('.credit').remove();
       }

@@ -38,6 +38,15 @@ img {
   font-size: 30px;
 }
 
+#tyrant {
+  color: red;
+  margin-top:0px;
+  position: absolute;
+  display: block;
+  font-size: 70px;
+  opacity:0;
+}
+
 .credit{
   width:150px;
   height: 100px;

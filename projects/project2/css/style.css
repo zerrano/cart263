@@ -1,5 +1,6 @@
 /* Our google font */
-@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One|Luckiest+Guy&display=swap');
+
 
 body {
   background-color: #6441a5;
@@ -21,7 +22,7 @@ p {
   color: white;
   text-align: center;
   margin: 0;
-  font-family: 'Luckiest Guy', cursive;
+  font-family: 'Fredoka One', cursive;
 }
 img {
   display:block;

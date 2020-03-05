@@ -24,6 +24,7 @@ let creditImageArray = ['creditcard1.png', 'creditcard2.png', 'creditcard3.png']
 
 
 function setup() {
+
   //our subscribe button
   subscribe();
   //giving our subscribe button an onclick function
@@ -58,7 +59,7 @@ function creditCard() {
     $('body').append($creditImage);
 
     //when our credit cards spawn, they will animate tot he bottom of the screen
-    let randomSpeed = (Math.random() * 2500)+500;
+    let randomSpeed = (Math.random() * 2500)+(Math.random()* 500);
     let distToBottom = window.innerHeight-80;
     $creditImage.animate({top:"+="+distToBottom}, randomSpeed);
   }
@@ -72,7 +73,15 @@ function subscribe() {
     let subscribe = {
       'I subscribed': function() {
         console.log('THANK YOU FOR SUBSCRIBING WOW');
-        $('.credit').remove();
+
+        //after saying "I subscribed", all spawned elements get animated back to the top of the screen
+        let randomSpeed = (Math.random() * 2500)+500;
+        let distToBottom = window.innerHeight+50;
+        $('.credit').animate({top:"-="+distToBottom}, randomSpeed);
+        let randomRGB = Math.random() * 255;
+        $('h1').css("color", randomRGB, 150, 200);
+
+        // $('.credit').remove();
       }
     };
     annyang.addCommands(subscribe);
